@@ -40,28 +40,29 @@ public interface IMainContract {
         public void onMenuInfoClicked();
 
         /**
-         *
+         * The presenter is informed that the user has requested to filter by operator
+         * If operator is null, no filtering is performed (all chargers are selected)
          * @param operator
          */
         public void onOperatorFilterClicked(EOperator operator);
 
         /**
-         *
+         * The presenter is informed that the user has requested to sort by distance
          */
         void onDistanceSortingClicked();
 
         /**
-         *
+         * The presenter is informed that the user has requested to sort by maximum charging power
          */
         void onPowerSortingClicked();
 
         /**
-         *
+         * The presenter is informed that the user has requested to sort by cost per kwh
          */
         void onCostSortingClicked();
 
         /**
-         *
+         * The presenter is informed that the user has requested to ignore outdated chargers
          * @param checked
          */
         void onIgnoreOutdatedChargers(boolean checked);

@@ -15,14 +15,15 @@ import es.unican.carchargers.model.Charger;
 import es.unican.carchargers.model.Connection;
 
 /**
- *
+ * Methods to sort chargers
  */
 public class ChargersSorting {
 
     public static final double EARTH_RADIUS = 6371d;
 
     /**
-     *
+     * Sort the chargers according to the distance to the given origin coordinates, in ascending
+     * order
      * @param input
      * @param originLat
      * @param originLon
@@ -36,7 +37,7 @@ public class ChargersSorting {
     }
 
     /**
-     *
+     * Sort the chargers according to their maximum cost per kwh, in ascending order
      * @param input
      * @return
      */
@@ -48,7 +49,7 @@ public class ChargersSorting {
     }
 
     /**
-     *
+     * Sort the chargers according to their maximum charging power they provide, in descending order
      * @param input
      * @return
      */
@@ -60,7 +61,7 @@ public class ChargersSorting {
     }
 
     /**
-     *
+     * Comparator to sort chargers according to their distance to an origin location
      */
     private static class DistanceComparator implements Comparator<Charger> {
 
@@ -87,7 +88,7 @@ public class ChargersSorting {
     }
 
     /**
-     *
+     * Comparator to sort chargers according to their maximum cost per kwh
      */
     private static class CostComparator implements Comparator<Charger> {
 
@@ -101,7 +102,7 @@ public class ChargersSorting {
     }
 
     /**
-     *
+     * Comparator to sort chargers according to the maximum charging power they provide
      */
     private static class PowerComparator implements Comparator<Charger> {
 
@@ -114,7 +115,7 @@ public class ChargersSorting {
     }
 
     /**
-     * Returns the distance between 2 locations, provided two pair of latitudes and longitudes
+     * Returns the distance between 2 locations, provided as two pair of latitudes and longitudes
      * @param lat1
      * @param lon1
      * @param lat2

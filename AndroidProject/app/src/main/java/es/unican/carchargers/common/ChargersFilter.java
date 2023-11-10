@@ -13,13 +13,13 @@ import es.unican.carchargers.constants.EOperator;
 import es.unican.carchargers.model.Charger;
 
 /**
- *
+ * Methods to perform filtering of chargers
  */
 public class ChargersFilter {
 
     /**
      * Selects the chargers that are owned by the given operator.
-     * If the operator is null, no filtering is performed
+     * If the operator is null, every charger is selected
      * @param input
      * @param operator
      * @return
@@ -40,7 +40,7 @@ public class ChargersFilter {
     }
 
     /**
-     * Filters the chargers that were verified more than 6 months ago
+     * Selects the chargers that were verified less than 6 months ago
      * @param input
      * @return
      */
