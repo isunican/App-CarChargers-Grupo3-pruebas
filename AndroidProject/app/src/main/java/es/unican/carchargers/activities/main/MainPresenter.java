@@ -117,6 +117,7 @@ public class MainPresenter implements IMainContract.Presenter {
     }
 
     @Override
+    // este
     public void onIgnoreOutdatedChargers(boolean checked) {
         this.processor.setIgnoreOutdated(checked);
         updateChargers(allChargers);

@@ -29,6 +29,8 @@ public class ChargersSorting {
      * @param originLon
      * @return
      */
+
+    // este
     public static List<Charger> sortByDistance(List<Charger> input, double originLat, double originLon) {
         DistanceComparator comparator = new DistanceComparator(originLat, originLon);
         List<Charger> output = new ArrayList<>(input);
