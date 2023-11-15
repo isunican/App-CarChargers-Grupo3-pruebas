@@ -54,7 +54,11 @@ sonar {
 android {
     namespace 'es.unican.carchargers'
     compileSdk 33
-
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
     defaultConfig {
         applicationId "es.unican.carchargers"
         minSdk 28
@@ -113,4 +117,7 @@ dependencies {
     // For local unit tests
     testImplementation 'com.google.dagger:hilt-android-testing:2.44.2'
     testAnnotationProcessor 'com.google.dagger:hilt-compiler:2.44.2'
+
+    testImplementation 'org.robolectric:robolectric:4.11.1'
+
 }

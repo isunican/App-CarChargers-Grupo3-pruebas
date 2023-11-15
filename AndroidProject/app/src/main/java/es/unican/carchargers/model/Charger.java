@@ -28,4 +28,7 @@ public class Charger {
         this.address = new Address();
     }
 
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }

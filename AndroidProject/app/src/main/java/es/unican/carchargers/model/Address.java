@@ -19,4 +19,11 @@ public class Address {
     @SerializedName("Latitude")         public String latitude;
     @SerializedName("Longitude")        public String longitude;
 
+    public Address(String latitude,String longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+    public Address() {
+    }
 }
+
