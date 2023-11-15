@@ -104,7 +104,7 @@ public class ChargersSorting {
     /**
      * Comparator to sort chargers according to the maximum charging power they provide
      */
-    private static class PowerComparator implements Comparator<Charger> {
+    public static class PowerComparator implements Comparator<Charger> {
 
         @Override
         public int compare(Charger o1, Charger o2) {
