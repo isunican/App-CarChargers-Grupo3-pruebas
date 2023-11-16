@@ -127,5 +127,7 @@ public class MainPresenter implements IMainContract.Presenter {
         this.processor.setActiveOperator(operator);
         updateChargers(allChargers);
     }
-
+    public ChargersProcessor getProcessor(){
+        return processor;
+    }
 }

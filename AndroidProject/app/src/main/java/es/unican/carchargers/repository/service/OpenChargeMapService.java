@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class OpenChargeMapService {
 
     /** My Open Charge Map API Key */
-    final static String API_KEY = BuildConfig.OCM_API_KEY;
+    final static String API_KEY ="https://api.openchargemap.io/v3/";
 
     /** Open Charge Map API base URL*/
     final static String BASE_URL = "https://api.openchargemap.io/v3/";

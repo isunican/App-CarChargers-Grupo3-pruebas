@@ -2,6 +2,7 @@ package es.unican.carchargers.activities.main;
 
 import java.util.List;
 
+import es.unican.carchargers.common.ChargersProcessor;
 import es.unican.carchargers.constants.EOperator;
 import es.unican.carchargers.constants.ESorting;
 import es.unican.carchargers.model.Charger;
@@ -66,6 +67,8 @@ public interface IMainContract {
          * @param checked
          */
         void onIgnoreOutdatedChargers(boolean checked);
+
+        ChargersProcessor getProcessor();
     }
 
     /**

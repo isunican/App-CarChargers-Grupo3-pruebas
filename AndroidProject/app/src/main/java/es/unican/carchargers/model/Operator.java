@@ -17,4 +17,5 @@ public class Operator {
     @SerializedName("Title")            public String title;
     @SerializedName("WebsiteURL")       public String website;
     @SerializedName("Comments")         public String comments;
-}
+
+ }
