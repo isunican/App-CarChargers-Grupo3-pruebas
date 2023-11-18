@@ -1,6 +1,7 @@
 package es.unican.carchargers;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import android.os.Build;
 
@@ -11,6 +12,9 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.io.FileInputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +34,7 @@ public class ChargersProcessorTest {
     @Before
     public void before() {
         try {
+            //Introducir ruta de pc propio
             FileInputStream fis = new FileInputStream("C:\\Users\\Yago Nava\\Desktop\\ProIntPruebas\\App-CarChargers-Grupo3-pruebas\\AndroidProject\\app\\src\\main\\res\\raw\\chargers_es_apply.json");
             chargers = Utils.fakeSuccess(fis);
         } catch (Exception e) {}
@@ -38,6 +43,7 @@ public class ChargersProcessorTest {
 
     @Test
     public void applyVacioTest() {
+        //Test de prueba de llamada al metodo
         procesador = new ChargersProcessor();
         List<Charger> result = procesador.apply(chargers);
         assertEquals(chargers, result);
@@ -45,6 +51,7 @@ public class ChargersProcessorTest {
 
     @Test
     public void applyCasoUnoTest() {
+        //Necesario comprobar fecha y companhia
         procesador = new ChargersProcessor();
         procesador.setIgnoreOutdated(true);
         procesador.setActiveOperator(EOperator.IBERDROLA);
@@ -56,13 +63,19 @@ public class ChargersProcessorTest {
         assertEquals(1, result.size());
         //Comprobar companhia y fecha
         for(int i = 0; i < result.size(); i++) {
+            //Compruebo que la companhia sea correcta
             assertEquals("Iberdrola", result.get(i).operator.toString());
-            //assertTrue(LocalDateTime.now().minus(6, ChronoUnit.MONTHS).isBefore(result.get(i).dateLastVerified));
+            //Compruebo que el cargador este actualizado
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            LocalDateTime fechaLastVerified = LocalDateTime.parse(result.get(i).dateLastVerified, formatter);
+            LocalDateTime sixMonthsAgo = LocalDateTime.now().minus(6, ChronoUnit.MONTHS);
+            assertTrue(sixMonthsAgo.isBefore(fechaLastVerified));
         }
     }
 
     @Test
     public void applyCasoDosTest() {
+        //Necesario comprobar ordenamiento y companhia
         procesador = new ChargersProcessor();
         procesador.setIgnoreOutdated(false);
         procesador.setActiveOperator(EOperator.ZUNDER);
@@ -72,18 +85,20 @@ public class ChargersProcessorTest {
 
         //Comprobar numero de elementos
         assertEquals(3, result.size());
-        //Comprobar el primero, intermedio y último
+        //Comprobar ordenamiento: primero, intermedio y último
         assertEquals("213052", result.get(0).id);
         assertEquals("204700", result.get(1).id);
         assertEquals("188299", result.get(2).id);
         //Comprobar companhia y fecha
         for(int i = 0; i < result.size(); i++) {
+            //Compruebo que la companhia sea correcta
             assertEquals("Zunder", result.get(i).operator.toString());
         }
     }
 
     @Test
     public void applyCasoTresTest() {
+        //Necesario comprobar ordenamiento y companhia
         procesador = new ChargersProcessor();
         procesador.setIgnoreOutdated(false);
         procesador.setActiveOperator(EOperator.REPSOL);
@@ -93,19 +108,20 @@ public class ChargersProcessorTest {
 
         //Comprobar numero de elementos
         assertEquals(3, result.size());
-
-        //Comprobar el primero, intermedio y último
+        //Comprobar ordenamiento: primero, intermedio y último
         assertEquals("209443", result.get(0).id);
         assertEquals("201410", result.get(1).id);
         assertEquals("274508", result.get(2).id);
         //Comprobar companhia y fecha
         for(int i = 0; i < result.size(); i++) {
+            //Compruebo que la companhia sea correcta
             assertEquals("Repsol - Ibil (ES)", result.get(i).operator.toString());
         }
     }
 
     @Test
     public void applyCasoCuatroTest() {
+        //Necesario comprobar ordenamiento y companhia
         procesador = new ChargersProcessor();
         procesador.setIgnoreOutdated(false);
         procesador.setActiveOperator(EOperator.WENEA);
@@ -116,12 +132,13 @@ public class ChargersProcessorTest {
 
         //Comprobar numero de elementos
         assertEquals(3, result.size());
-        //Comprobar el primero, intermedio y último
+        //Comprobar ordenamiento: primero, intermedio y último
         assertEquals("203417", result.get(0).id);
         assertEquals("201994", result.get(1).id);
         assertEquals("212956", result.get(2).id);
         //Comprobar companhia y fecha
         for(int i = 0; i < result.size(); i++) {
+            //Compruebo que la companhia sea correcta
             assertEquals("Wenea", result.get(i).operator.toString());
         }
     }

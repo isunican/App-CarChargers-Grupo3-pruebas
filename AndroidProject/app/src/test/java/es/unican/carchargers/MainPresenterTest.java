@@ -5,7 +5,6 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import android.location.Location;
 import android.os.Build;
 
 import org.junit.Before;
@@ -20,12 +19,10 @@ import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Flow;
 
 import es.unican.carchargers.activities.main.IMainContract;
 import es.unican.carchargers.activities.main.MainPresenter;
 import es.unican.carchargers.common.ChargersProcessor;
-import es.unican.carchargers.common.ChargersSorting;
 import es.unican.carchargers.constants.ESorting;
 import es.unican.carchargers.model.Charger;
 import es.unican.carchargers.repository.IRepository;
@@ -40,37 +37,27 @@ public class MainPresenterTest {
     IMainContract.View view;
     @Mock
     ChargersProcessor processor;
-    //@Mock
-    //ChargersSorting sorter;
-    //@Mock
-    //Location location;
-
     IMainContract.Presenter sut;
     IRepository repository;
     List<Charger> listaCargadores = new ArrayList<>();
-    //Para captar los argumnetos pasados al mock
+    //Para obtener los argumnetos pasados al mock
     ArgumentCaptor<List<Charger>> captor;
     List<Charger> capturados = new ArrayList<>();
 
     @Before
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        //Inicializa repositorio falso
+        //Inicializa repositorio de cargadores para el test
         repository = Repositories.getSyncFake(listaCargadores);
         captor = ArgumentCaptor.forClass((List.class));
         sut = new MainPresenter();
         // Crear un mock de ChargersProcessor
         processor = Mockito.mock(ChargersProcessor.class);
-        //location = Mockito.mock(Location.class);
-        //sorter = Mockito.mock(ChargersSorting.class);
     }
 
     //CASO1: Ordenar con lista ya ordenada
     @Test
-    public void onDistanceSortingClickedCaso1Test() {
-        //Ordenamiento por distancia
-        ESorting sorting = ESorting.DISTANCE;
-
+    public void onDistanceSortingClickedCasoUnoTest() {
         //Creo puntos de carga y les asigno unas coordenadas
         Charger c1 = new Charger();
         c1.address.latitude = "52.343197";
@@ -101,16 +88,13 @@ public class MainPresenterTest {
         assertEquals(capturados.get(0), c1);
         assertEquals(capturados.get(1), c2);
         assertEquals(capturados.get(2), c3);
-        //Verificar tamaño de la lista
+        //Verificar tamanho de la lista
         assertEquals(capturados.size(), 3);
     }
 
     //CASO 2: Ordenar con lista desordenada
     @Test
-    public void onDistanceSortingClickedCaso2Test() {
-        //Ordenamiento por distancia
-        ESorting sorting = ESorting.DISTANCE;
-
+    public void onDistanceSortingClickedCasoDosTest() {
         //Creo puntos de carga y les asigno unas coordenadas
         Charger c1 = new Charger();
         c1.address.latitude = "52.343197";
@@ -142,16 +126,13 @@ public class MainPresenterTest {
         assertEquals(capturados.get(0), c1);
         assertEquals(capturados.get(1), c2);
         assertEquals(capturados.get(2), c3);
-        //Verificar tamaño de la lista
+        //Verificar tamanho de la lista
         assertEquals(capturados.size(), 3);
     }
 
     //CASO 3: Ordenar con 2 cargadores con misma ubicacion
     @Test
-    public void onDistanceSortingClickedCaso3Test() {
-        //Ordenamiento por distancia
-        ESorting sorting = ESorting.DISTANCE;
-
+    public void onDistanceSortingClickedCasoTresTest() {
         //Creo puntos de carga y les asigno unas coordenadas
         Charger c1 = new Charger();
         c1.address.latitude = "52.343197";
@@ -183,7 +164,7 @@ public class MainPresenterTest {
         assertEquals(capturados.get(0), c1);
         assertEquals(capturados.get(1), c3);
         assertEquals(capturados.get(2), c2);
-        //Verificar tamaño de la lista
+        //Verificar tamanho de la lista
         assertEquals(capturados.size(), 3);
     }
 
@@ -191,10 +172,7 @@ public class MainPresenterTest {
     //No es aplicable ya que con valores null no es posible invocar sortByDistance
     /*
     @Test
-    public void onDistanceSortingClickedCaso1Test() {
-        //Ordenamiento por distancia
-        ESorting sorting = ESorting.DISTANCE;
-
+    public void onDistanceSortingClickedCasoCuatroTest() {
         //Creo puntos de carga y les asigno unas coordenadas
         Charger c1 = new Charger();
         c1.address.latitude = "52.343197";
@@ -230,7 +208,8 @@ public class MainPresenterTest {
         assertEquals(capturados.get(0), c1);
         assertEquals(capturados.get(1), c2);
         assertEquals(capturados.get(2), c3);
-        //Verificar tamaño de la lista
+        assertEquals(capturados.get(3), c4);
+        //Verificar tamanho de la lista
         assertEquals(capturados.size(), 4);
     }
     */
