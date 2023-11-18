@@ -55,7 +55,7 @@ public class ChargersFilter {
             }
         }
 
-        return input;
+        return output;
     }
 
     /**
