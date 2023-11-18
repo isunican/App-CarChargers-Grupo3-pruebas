@@ -28,4 +28,10 @@ public class Charger {
         this.address = new Address();
     }
 
+    public String dateString() {
+        return dateLastVerified;
+    }
+
+
+
 }
