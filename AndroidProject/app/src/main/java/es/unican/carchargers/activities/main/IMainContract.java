@@ -68,7 +68,6 @@ public interface IMainContract {
          */
         void onIgnoreOutdatedChargers(boolean checked);
 
-        ChargersProcessor getProcessor();
     }
 
     /**

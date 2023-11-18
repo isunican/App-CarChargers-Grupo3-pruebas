@@ -10,7 +10,7 @@ import java.util.List;
 import es.unican.carchargers.common.ChargersSorting;
 import es.unican.carchargers.model.Charger;
 
-public class SortByCostTest {
+public class ChargersSortingTest {
     ArrayList<Charger> cargadores = new ArrayList<>();
 
     //CASO 1:Ordena de menor precio a mayor
@@ -48,7 +48,7 @@ public class SortByCostTest {
         assertEquals(cargadoresOrdenados.get(4), cargador5);
     }
 
-    //CASO 2: Ordena de menor a mayor dejando en ultima posicion el que tiene el precio a null
+    //CASO 2: Ordena de menor a mayor dejando en ultima posicion el que no tiene precio.
     @Test
     public void sortingByCostNullTest() {
         //Creo cargadores
@@ -83,7 +83,7 @@ public class SortByCostTest {
         assertEquals(cargadoresOrdenados.get(4), cargador2);
     }
 
-    //CASO 3: Ordena de menor a mayor y en caso de que los precios sean iguales los ordena segun el orden en cargadores
+    //CASO 3: Ordena de menor a mayor y en caso de que los precios sean iguales los ordena segun el orden de cargadores
     @Test
     public void sortingByCostIgualesTest() {
         //Creo cargadores
@@ -118,7 +118,7 @@ public class SortByCostTest {
         assertEquals(cargadoresOrdenados.get(4), cargador4);
     }
 
-    //CASO3: Ordena los caradores de menor a mayor precio con otros valores respecto al primer test
+    //CASO3: Ordena los caradores de menor a mayor precio con distinto valores respecto al primer test
     @Test
     public void sortingByCostDescTest() {
         //Creo cargadores
