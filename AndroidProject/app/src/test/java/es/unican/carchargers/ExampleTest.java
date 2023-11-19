@@ -43,6 +43,7 @@ public class ExampleTest {
         when(view.getRepository()).thenReturn(repository);
         sut.init(view);
 
+
         verify(view, times(1)).showChargers(anyList());
 
         ArgumentCaptor<List<Charger>> captor = ArgumentCaptor.forClass(List.class);
