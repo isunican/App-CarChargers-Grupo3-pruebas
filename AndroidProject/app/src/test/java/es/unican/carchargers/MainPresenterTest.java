@@ -146,8 +146,8 @@ public class MainPresenterTest {
 
         //Anhado los cargadores a la lista
         listaCargadores.add(c1);
-        listaCargadores.add(c3);
         listaCargadores.add(c2);
+        listaCargadores.add(c3);
 
         //Establezco el comportamiento del mock
         when(view.getRepository()).thenReturn(repository);
@@ -181,17 +181,13 @@ public class MainPresenterTest {
         c2.address.latitude = "-29.6866";
         c2.address.longitude = "1.170632";
         Charger c3 = new Charger();
-        c3.address.latitude = "-30.6866";
-        c3.address.longitude = "1.170632";
-        Charger c4 = new Charger();
-        c4.address.latitude = null;
-        c4.address.longitude = null;
+        c3.address.latitude = null;
+        c3.address.longitude = null;
 
         //Anhado los cargadores a la lista
         listaCargadores.add(c1);
         listaCargadores.add(c2);
         listaCargadores.add(c3);
-        listaCargadores.add(c4);
 
         //Establezco el comportamiento del mock
         when(view.getRepository()).thenReturn(repository);
@@ -208,9 +204,8 @@ public class MainPresenterTest {
         assertEquals(capturados.get(0), c1);
         assertEquals(capturados.get(1), c2);
         assertEquals(capturados.get(2), c3);
-        assertEquals(capturados.get(3), c4);
         //Verificar tamanho de la lista
-        assertEquals(capturados.size(), 4);
+        assertEquals(capturados.size(), 3);
     }
     */
 }
