@@ -23,7 +23,7 @@ import es.unican.carchargers.model.Charger;
 import es.unican.carchargers.repository.IRepository;
 import es.unican.carchargers.repository.Repositories;
 
-public class onIgnoreOutDatedChargersTest {
+public class MainPresenterTest {
     @Mock
     IMainContract.View mainView;
     @Mock

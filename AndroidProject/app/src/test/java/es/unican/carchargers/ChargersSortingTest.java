@@ -17,7 +17,7 @@ import es.unican.carchargers.model.Address;
 import es.unican.carchargers.model.Charger;
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = {Build.VERSION_CODES.R}) //O_MR1})
-public class SortBYDistanceTest {
+public class ChargersSortingTest {
     ArrayList<Charger> cargadores = new ArrayList<>();
     @Test
     public void  ordenadoConYaOrdenadastest() {
