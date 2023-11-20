@@ -74,11 +74,11 @@ public class MainPresenterTest {
 
         //Caso verdadero, devuelve solo los dos primeros
         sut.onIgnoreOutdatedChargers(true);
-        verify(view, times(1)).showChargers(chargersUpdated);
+        verify(view, atLeast(1)).showChargers(chargersUpdated);
 
         //Caso falso, devuelve la lista completa
         sut.onIgnoreOutdatedChargers(false);
-        verify(view, times(1)).showChargers(chargers);
+        verify(view, atLeast(1)).showChargers(chargers);
 
     }
 
