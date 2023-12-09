@@ -35,8 +35,6 @@ public class MainPresenterTest {
     //Aqui se prueba el metodo MainPresenter.onDistanceSortingClicked con mocks
     @Mock
     IMainContract.View view;
-    @Mock
-    ChargersProcessor processor;
     IMainContract.Presenter sut;
     IRepository repository;
     List<Charger> listaCargadores = new ArrayList<>();
@@ -51,8 +49,6 @@ public class MainPresenterTest {
         repository = Repositories.getSyncFake(listaCargadores);
         captor = ArgumentCaptor.forClass((List.class));
         sut = new MainPresenter();
-        // Crear un mock de ChargersProcessor
-        processor = Mockito.mock(ChargersProcessor.class);
     }
 
     //CASO1: Ordenar con lista ya ordenada
